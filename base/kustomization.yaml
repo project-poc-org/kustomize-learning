@@ -1,0 +1,14 @@
+cat > deployment.yaml << 'EOF2' && \
+# Base service
+cat > service.yaml << 'EOF3' && \
+echo "✅ Created base resources"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deployment.yaml
+  - service.yaml
+  - configmap.yaml
+  - secret.yaml
+commonLabels:
+  app: myapp
+  managed-by: kustomize
