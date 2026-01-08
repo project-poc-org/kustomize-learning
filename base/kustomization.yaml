@@ -7,6 +7,16 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
+configMapGenerator:
+  - name: app-config
+    literals:
+      - LOG_LEVEL=info
+      - FEATURE_X=true
+secretGenerator:
+  - name: app-secret
+    literals:
+      - DB_PASSWORD=supersecret
+      - API_KEY=devkey
   - configmap.yaml
   - secret.yaml
 commonLabels:

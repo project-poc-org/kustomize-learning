@@ -1,0 +1,14 @@
+resources:
+  - ../../base
+patchesStrategicMerge:
+  - deployment-patch.yaml
+configMapGenerator:
+  - name: app-config
+    literals:
+      - LOG_LEVEL=info
+      - FEATURE_X=true
+secretGenerator:
+  - name: app-secret
+    literals:
+      - DB_PASSWORD=stagingpassword
+      - API_KEY=stagingkey
